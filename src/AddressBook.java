@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 
 public class AddressBook {
 	private static HashMap<String, String> addressBook = new HashMap<>();
@@ -18,15 +19,27 @@ public class AddressBook {
 	}
 
 	static void findByPhone(String phone) {
-
-		addressBook.forEach((key, val) -> {
-			if (val.equals(phone)) {
-				System.out.println(key + " = " + val);
-			} else {
-				System.out.printf("Phone number %s Not found!%n", phone);
+		String contact = null;
+		for (Map.Entry<String, String> entry : addressBook.entrySet()) {
+			if (entry.getValue().equals(phone)) {
+				contact = entry.getKey();
 			}
-		});
+		}
+		if (contact != null) {
 
+			System.out.printf("Name: %s, Phone: %s%n", contact, phone);
+		} else {
+			System.out.printf("Phone number %s Not found!%n", phone);
+		}
+//		addressBook.forEach((key, val) -> {
+//			
+//			if (val.equals(phone)) {
+//				contact = key;
+//				System.out.printf("Name: %s, Phone: %s%n", key, val);
+//			} else {
+//				System.out.printf("Phone number %s Not found!%n", phone);
+//			}
+//		});
 	}
 
 	static void findByName(String name) {
@@ -40,6 +53,6 @@ public class AddressBook {
 	}
 
 	static void printAddressBook() {
-		addressBook.forEach((key, value) -> System.out.println(key + " = " + value));
+		addressBook.forEach((key, value) -> System.out.printf("Name: %s, Phone: %s%n", key, value));
 	}
 }
