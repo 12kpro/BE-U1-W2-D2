@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -8,7 +10,8 @@ public class es_1 {
 		Scanner input = new Scanner(System.in);
 		int n;
 		Set<String> words = new HashSet<>();
-		Set<String> duplicate = new HashSet<>();
+		List<String> duplicate = new ArrayList<String>(); // per mantenere la lista delle parole duplicate convertito da
+															// HashSet a Arraylist
 
 		while (true) {
 			try {
